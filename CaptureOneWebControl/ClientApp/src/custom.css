@@ -1,0 +1,145 @@
+:root {
+  --color-red: hsl(0, 100%, 70%);
+  --color-dark: hsl(0, 0%, 20%);
+  --color-background-dark: rgb(31, 34, 35);
+  --color-capture-one-blue: hsl(212, 87%, 53%);
+}
+
+body {
+  position: relative;
+  background-color: var(--color-background-dark);
+}
+
+
+.buttonsGroup {
+  position: relative;
+  height: 100dvh;
+  padding: 1rem 1rem;
+  display: grid;
+  grid-template-rows: .75fr .25fr;
+
+}
+
+.button {
+  padding: 1rem;
+  background-color: var(--color-dark);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 1.5rem;
+  margin: .5rem 0;
+  transform: scale(1);
+  transition: 100ms ease-out;
+  overflow: hidden;
+}
+
+#captureButton {
+  box-shadow: 0 3px 0px 2px var(--color-red);
+}
+
+#captureButton:active {
+  box-shadow: 0 0px 0px 0px var(--color-red);
+}
+
+#liveViewButton {
+  background-color: var(--color-red);
+}
+
+#captureIcon,
+#liveViewIcon {
+  position: relative;
+  width: 90%;
+  height: 90%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  user-select: none;
+  pointer-events: none;
+}
+
+#liveViewIcon {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+#liveViewIcon img {
+  min-width: 0;
+  transition: transform 100ms ease-out;
+}
+
+#captureIcon img {
+  position: absolute;
+}
+
+#captureIconInner {
+  transition: transform 100ms ease-out;
+}
+
+#captureIconOuter {
+  transition: transform 100ms ease-out;
+}
+
+@media screen and (min-width: 800px) {
+  .button:hover {
+    transform: scale(1.02);
+    background-color: hsl(0, 0%, 40%)
+  }
+}
+
+.button:active {
+  background-color: hsl(0, 0%, 40%);
+  transform: scale(0.95);
+}
+
+.button:active #captureIconInner {
+  transform: scale(1.2)
+}
+
+.button:active #liveViewIconLeft {
+  transform: translateX(-80%);
+}
+
+.button:active #liveViewIconRight {
+  transform: translateX(80%);
+}
+
+.button:active #liveViewIconText {
+  letter-spacing: .3rem;
+  /* transform: scale(.6); */
+}
+
+.toastNotification {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  width: 25rem;
+  right: 50%;
+  transform: translate(50%, 0%);
+  height: 2rem;
+  border-radius: 1.5rem;
+  background-color: var(--color-capture-one-blue);
+  font-family: "Calibri", sans-serif;
+  font-weight: bold;
+  padding: 1rem 1rem;
+  overflow-x: hidden;
+}
+
+.toastNotification span {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  min-width: 0;
+  align-items: center;
+  overflow: hidden;
+  text-align: center;
+  word-break: keep-all;
+  text-overflow: ellipsis;
+  color: white;
+  height: 100%;
+  width: 100%;
+  white-space: nowrap;
+}
